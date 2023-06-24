@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	while (*format != '\0')
 	{
-		if (*format != '%')
+		if (*format != '%' || (*format == '%' && !is_specifier(*(format + 1))))
 		{
 			count += _putchar(*format);
 			format++;

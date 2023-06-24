@@ -8,7 +8,7 @@ int _putstr(char *s)
 {
 	int i = 0, count = 0;
 
-	if (!s)
+	if (!s || *s == '\0')
 		return (0);
 	while (s[i] != '\0')
 		count += _putchar(s[i++]);
