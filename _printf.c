@@ -1,29 +1,11 @@
 #include "main.h"
 #include <stdio.h>
-/**
- * _strlen - counts the lenght of a string
- * @s: the string
- * Return: the lenght of the string
- */
-int _strlen(char *s)
-{
-	int len = 0;
 
-	if (!s)
-		return (0);
-	while (s[len] != '\0')
-		len++;
-	return (len);
-}
 /**
- * _putchar - prints a character to stdout
- * @c: the character to be printed
- * Return: the number of printed character, in this case 1
+ * _printf - prints formated output to standard output
+ * @format: the formated string
+ * Return: the number of printed characters
  */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -41,34 +23,22 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			switch(*format)
+			switch (*format)
 			{
 				case 'c':
 					format++;
 					c = va_arg(args, int);
-					printf("-%c-\n", c);
-					_putchar(c);
+					count += _putchar(c);
 					break;
 				case 's':
 					format++;
 					s = va_arg(args, char*);
-					len = _strlen(s);
-					if (len > 0)
-						while (*s != '\0')
-						{
-							_putchar(*s);
-							s++;
-						}
+					count += _putstr(s);
 					break;
-				defaul:
+				default:
 					break;
 			}
 		}
 	}
-	return (0);
-}
-int main(void)
-{
-	_printf("%s\n", "Test");
-	return (0);
+	return (count);
 }
