@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 				case 'C':
-			i		format++;
+					format++;
 					c = va_arg(args, int);
 					count += _putchar(c);
 					break;
