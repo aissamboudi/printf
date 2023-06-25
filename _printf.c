@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 			count += _putchar(*format);
 			format++;
 		}
-		else if (*format == '%' && !is_specifier(*(format + 1)))
+		else if (*format == '%' && is_specifier(*(format + 1)))
 		{
 			format++;
 			switch (*format)
@@ -36,12 +36,17 @@ int _printf(const char *format, ...)
 					count += _putstr(s);
 					break;
 				case '%':
-					forma++;
+					format++;
 					_putchar('%');
 					break;
 				default:
 					break;
 			}
+		}
+		else
+		{
+			format++;
+			count++;
 		}
 	}
 	va_end(args);
