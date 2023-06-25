@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 					break;
 				case '%':
 					format++;
-					_putchar('%');
+					count += _putchar('%');
 					break;
 				default:
 					break;
