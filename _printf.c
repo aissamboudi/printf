@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 					break;
 				case '%':
 					forma++;
-					_putstr(*format);
+					_putchar('%');
 					break;
 				default:
 					break;
