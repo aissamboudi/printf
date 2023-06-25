@@ -15,12 +15,12 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	while (*format != '\0')
 	{
-		if (*format != '%' || (*format == '%' && !is_specifier(*(format + 1))))
+		if (*format != '%')
 		{
 			count += _putchar(*format);
 			format++;
 		}
-		else
+		else if (*format == '%' && !is_specifier(*(format + 1)))
 		{
 			format++;
 			switch (*format)
@@ -34,6 +34,10 @@ int _printf(const char *format, ...)
 					format++;
 					s = va_arg(args, char*);
 					count += _putstr(s);
+					break;
+				case '%':
+					forma++;
+					_putstr(*format);
 					break;
 				default:
 					break;
