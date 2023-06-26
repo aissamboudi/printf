@@ -14,7 +14,6 @@ int count_args(const char *format)
 	{
 		if (format[i] == '%' && is_specifier(format[i + 1]) && format[i + 1] != '%')
 			count++;
-		i++;
 	}
 	return (count);
 
