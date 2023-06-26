@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 
 	va_start(curr_arg, format);
 	c_args = count_args(format);
-	while (c_args > 0 || *format != '\0')
+	while (*format != '\0')
 	{
 		if (*format == '%' && is_specifier(*(format + 1)))
 		{
@@ -49,7 +49,10 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			count += _putchar(*format);
+			if (*format != '%')
+			{
+				count += _putchar(*format);
+			}
 			format++;
 		}
 	}
