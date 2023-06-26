@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 int is_specifier(char c);
+int count_args(const char *format);
 char *_itoa(int n);
 int _putchar(char c);
 int _putstr(char *s);

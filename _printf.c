@@ -7,12 +7,13 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
+	va_list curr_arg;
 	char *s, c;
-	int count = 0, num;
+	int c_args, count = 0, num;
 
-	va_start(args, format);
-	while (*format != '\0')
+	va_start(curr_arg, format);
+	c_args = count_args(format);
+	while (c_args > 0 || *format != '\0')
 	{
 		if (*format == '%' && is_specifier(*(format + 1)))
 		{
@@ -21,13 +22,15 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					format++;
-					c = va_arg(args, int);
+					c = va_arg(curr_arg, int);
 					count += _putchar(c);
+					c_args--;
 					break;
 				case 's':
 					format++;
-					s = va_arg(args, char*);
+					s = va_arg(curr_arg, char*);
 					count += _putstr(s);
+					c_args--;
 					break;
 				case '%':
 					format++;
@@ -36,8 +39,9 @@ int _printf(const char *format, ...)
 				case 'd':
 				case 'i':
 					format++;
-					num = va_arg(args, int);
+					num = va_arg(curr_arg, int);
 					count += _putstr(_itoa(num));
+					c_args--;
 					break;
 				default:
 					break;
@@ -49,6 +53,6 @@ int _printf(const char *format, ...)
 			format++;
 		}
 	}
-	va_end(args);
+	va_end(curr_arg);
 	return (count);
 }
