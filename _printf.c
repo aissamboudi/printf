@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _printf - prints formated output to standard output
@@ -10,7 +9,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	char *s, c;
-	int count = 0;
+	int count = 0, num;
 
 	va_start(args, format);
 	while (*format != '\0')
@@ -33,6 +32,12 @@ int _printf(const char *format, ...)
 				case '%':
 					format++;
 					count += _putchar('%');
+					break;
+				case 'd':
+				case 'i':
+					format++;
+					num = va_arg(args, int);
+					count += _putstr(_itoa(num));
 					break;
 				default:
 					break;
