@@ -39,6 +39,11 @@ int _printf(const char *format, ...)
 					num = va_arg(args, int);
 					count += _putstr(_itoa(num));
 					break;
+				case 'b':
+					format++;
+					num = va_arg(args, int);
+					count += _putstr(_itob(num));
+					break;
 				default:
 					break;
 			}
