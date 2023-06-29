@@ -2,7 +2,7 @@
 
 /**
  * _itob - converts an int to binary
- * @n: the integer
+ * @n: the integer.
  * Return: binary
  */
 char *_itob(int n)
