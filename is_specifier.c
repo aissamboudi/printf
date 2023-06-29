@@ -2,7 +2,7 @@
 
 /**
  * is_specifier - checks if a giver character
- * is int the list of specifiers
+ * is int the list of specifiers.
  * @c: a char
  * Return: 1 if c is in the list 0 if not
  */
